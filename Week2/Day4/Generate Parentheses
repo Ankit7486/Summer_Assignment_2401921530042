@@ -1,0 +1,15 @@
+class Solution {
+    private void backtrack(List<String> li, String curr ,int open, int closed, int n) {
+        if(curr.length() == 2*n) {
+            li.add(curr);
+            return;
+        }
+        if(open < n) backtrack(li,curr+"(",open+1,closed,n);
+        if(closed< open) backtrack(li,curr+")",open,closed+1,n);
+    }
+    public List<String> generateParenthesis(int n) {
+        List<String> li = new ArrayList<>();
+        backtrack(li,"",0,0,n);
+        return li;
+    }
+}
